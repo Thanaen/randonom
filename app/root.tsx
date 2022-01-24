@@ -1,15 +1,16 @@
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Randonom" };
 };
 
 export default function App() {
@@ -22,6 +23,16 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Accueil</Link>
+            </li>
+            <li>
+              <Link to="/add">Ajouter des noms</Link>
+            </li>
+          </ul>
+        </nav>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
