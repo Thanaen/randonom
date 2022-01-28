@@ -29,6 +29,9 @@ export default function App() {
               <Link to="/">Accueil</Link>
             </li>
             <li>
+              <Link to="/list">Liste des noms</Link>
+            </li>
+            <li>
               <Link to="/add">Ajouter des noms</Link>
             </li>
           </ul>
