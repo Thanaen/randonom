@@ -4,10 +4,12 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "remix build",
-    "dev": "node -r dotenv/config ./node_modules/@remix-run/dev/cli.js",
-    "postinstall": "remix setup node",
-    "start": "remix-serve build"
+    "build": "cross-env NODE_ENV=production remix build",
+    "dev": "cross-env NODE_ENV=development run-p dev:*",
+    "postinstall": "remix setup cloudflare-pages",
+    "dev:remix": "remix watch",
+    "dev:wrangler": "wrangler pages dev ./public --watch ./build",
+    "start": "npm run dev:wrangler"
   },
   "dependencies": {
     "@azure/cosmos": "^3.15.1",
