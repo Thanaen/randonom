@@ -1,4 +1,5 @@
 import { ActionFunction, Form, useActionData } from "remix";
+import { Title, Text, Button } from "@mantine/core";
 import { container } from "~/db.server";
 
 // Query a random first name in the database
@@ -30,20 +31,20 @@ export default function Index() {
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Bienvenue sur Randonom</h1>
-      <p>
+      <Title order={1}>Bienvenue sur Randonom</Title>
+      <Text>
         Ici, vous pourrez générer des pseudos loufoques qui feront rire tous vos
         amis.
-      </p>
+      </Text>
       <hr />
-      <h2>Générer un nom</h2>
+      <Title order={2}>Générer un nom</Title>
       <Form method="post">
-        <button type="submit">Générer un pseudo bizarroïde</button>
+        <Button type="submit">Générer un pseudo bizarroïde</Button>
       </Form>
       {actionData && actionData.body && (
         <>
-          <h3>Nom généré</h3>
-          <span>{actionData.body}</span>
+          <Title order={3}>Nom généré</Title>
+          <Text>{actionData.body}</Text>
         </>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { useLoaderData } from "remix";
+import { Table } from "@mantine/core";
 import { container } from "~/db.server";
 import type Name from "~/models/Name";
 
@@ -21,7 +22,7 @@ export default function List() {
   return (
     <div>
       <h1>Liste des noms</h1>
-      <table>
+      <Table>
         <thead>
           <tr>
             <td>Valeur</td>
@@ -36,7 +37,7 @@ export default function List() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
