@@ -4,9 +4,7 @@ import { container } from "~/db.server";
 import type Name from "~/models/Name";
 
 export async function loader() {
-  const { resources: names } = await container.items
-    .query("SELECT * FROM c")
-    .fetchAll();
+  const { resources: names } = await container.items.query("SELECT * FROM c").fetchAll();
 
   const formattedNames = names.map(({ value, type }) => ({
     value: value,

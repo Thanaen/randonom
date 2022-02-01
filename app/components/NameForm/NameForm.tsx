@@ -4,14 +4,7 @@ import { TextInput, NativeSelect, Button } from "@mantine/core";
 export default function NameForm() {
   return (
     <Form action="/add" method="post">
-      <TextInput
-        defaultValue=""
-        name="value"
-        id="value"
-        type="text"
-        label="Valeur"
-        mb={8}
-      />
+      <TextInput defaultValue="" name="value" id="value" type="text" label="Valeur" mb={8} />
       <NativeSelect
         defaultValue="0"
         label="Type"

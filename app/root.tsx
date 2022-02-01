@@ -1,26 +1,7 @@
-import {
-  Link,
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "remix";
+import { Link, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "remix";
 import type { MetaFunction } from "remix";
-import {
-  AppShell,
-  Navbar,
-  Header,
-  MantineProvider,
-  Button,
-  createStyles,
-} from "@mantine/core";
-import {
-  ViewListIcon,
-  PlusIcon,
-  LightBulbIcon,
-} from "@heroicons/react/outline";
+import { AppShell, Navbar, Header, MantineProvider, Button, createStyles } from "@mantine/core";
+import { ViewListIcon, PlusIcon, LightBulbIcon } from "@heroicons/react/outline";
 import { NotificationsProvider } from "@mantine/notifications";
 
 export const meta: MetaFunction = () => {
@@ -46,11 +27,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <MantineProvider
-          withNormalizeCSS
-          withGlobalStyles
-          theme={{ colorScheme: "dark" }}
-        >
+        <MantineProvider withNormalizeCSS withGlobalStyles theme={{ colorScheme: "dark" }}>
           <NotificationsProvider>
             <AppShell
               navbar={
@@ -58,9 +35,7 @@ export default function App() {
                   <Navbar.Section mb={8}>
                     <Button
                       variant="subtle"
-                      leftIcon={
-                        <LightBulbIcon className={styles.classes.icon} />
-                      }
+                      leftIcon={<LightBulbIcon className={styles.classes.icon} />}
                       component={Link}
                       to="/"
                     >
@@ -70,9 +45,7 @@ export default function App() {
                   <Navbar.Section mb={8}>
                     <Button
                       variant="subtle"
-                      leftIcon={
-                        <ViewListIcon className={styles.classes.icon} />
-                      }
+                      leftIcon={<ViewListIcon className={styles.classes.icon} />}
                       component={Link}
                       to="/list"
                     >
