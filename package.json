@@ -47,10 +47,5 @@
   "engines": {
     "node": ">=14"
   },
-  "sideEffects": false,
-  "lint-staged": {
-    "*.{ts,tsx}": "tsc -p tsconfig.json --noEmit",
-    "*.{ts,tsx,json}": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
-  }
+  "sideEffects": false
 }

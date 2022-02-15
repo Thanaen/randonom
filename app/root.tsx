@@ -1,8 +1,9 @@
-import { Link, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "remix";
+import { NavLink, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "remix";
 import type { MetaFunction } from "remix";
 import { AppShell, Navbar, Header, MantineProvider, Button, createStyles } from "@mantine/core";
 import { ViewListIcon, PlusIcon, LightBulbIcon } from "@heroicons/react/outline";
 import { NotificationsProvider } from "@mantine/notifications";
+import type { ReactNode } from "react";
 
 export const meta: MetaFunction = () => {
   return { title: "Randonom" };
@@ -15,11 +16,29 @@ const useStyles = createStyles({
   },
 });
 
+interface NavButtonProps {
+  to: string;
+  children: ReactNode;
+  leftIcon: ReactNode;
+}
+
+const NavButton = ({ to, children, leftIcon }: NavButtonProps) => {
+  return (
+    <NavLink to={to}>
+      {({ isActive }) => (
+        <Button variant={isActive ? "filled" : "subtle"} leftIcon={leftIcon}>
+          {children}
+        </Button>
+      )}
+    </NavLink>
+  );
+};
+
 export default function App() {
   const styles = useStyles();
 
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -33,34 +52,22 @@ export default function App() {
               navbar={
                 <Navbar width={{ base: 360 }} padding="xs">
                   <Navbar.Section mb={8}>
-                    <Button
-                      variant="subtle"
-                      leftIcon={<LightBulbIcon className={styles.classes.icon} />}
-                      component={Link}
-                      to="/"
-                    >
+                    <NavButton to="/" leftIcon={<LightBulbIcon className={styles.classes.icon} />}>
                       Générateur
-                    </Button>
+                    </NavButton>
                   </Navbar.Section>
                   <Navbar.Section mb={8}>
-                    <Button
-                      variant="subtle"
-                      leftIcon={<ViewListIcon className={styles.classes.icon} />}
-                      component={Link}
+                    <NavButton
                       to="/list"
+                      leftIcon={<ViewListIcon className={styles.classes.icon} />}
                     >
                       Liste
-                    </Button>
+                    </NavButton>
                   </Navbar.Section>
                   <Navbar.Section>
-                    <Button
-                      variant="subtle"
-                      leftIcon={<PlusIcon className={styles.classes.icon} />}
-                      component={Link}
-                      to="/add"
-                    >
+                    <NavButton to="/add" leftIcon={<PlusIcon className={styles.classes.icon} />}>
                       Ajouter un nom
-                    </Button>
+                    </NavButton>
                   </Navbar.Section>
                 </Navbar>
               }
